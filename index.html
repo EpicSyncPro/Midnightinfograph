@@ -1,11 +1,193 @@
-<!doctype html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=hekili_midnight_infographic_3.html">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Redirecting…</title>
-  </head>
-  <body>
-    Redirecting…
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EpicSyncPro</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --midnight: #0a0a12;
+  --void: #12101f;
+  --deep-purple: #1a1230;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --text-primary: #e8e6f0;
+  --text-secondary: #9893a8;
+  --text-muted: #5c5672;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--midnight);
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background */
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; z-index: 0;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+
+.bg-orb {
+  position: fixed; border-radius: 50%; filter: blur(140px); z-index: 0;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.bg-orb-1 { width: 550px; height: 550px; background: rgba(139,92,246,.07); top: -200px; right: -150px; }
+.bg-orb-2 { width: 450px; height: 450px; background: rgba(59,130,246,.05); bottom: 10%; left: -150px; animation-delay: -7s; }
+@keyframes orbFloat {
+  0%,100%{transform:translate(0,0)}
+  33%{transform:translate(30px,-30px)}
+  66%{transform:translate(-20px,20px)}
+}
+
+/* Content */
+.page { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+
+.brand {
+  font-family: 'Cinzel', serif; font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.02em; line-height: 1.1;
+  margin-bottom: 0.5rem;
+  animation: fadeSlideUp 0.7s ease-out both;
+}
+.brand .gradient {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.tagline {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-secondary); font-weight: 300;
+  margin-bottom: 3rem;
+  animation: fadeSlideUp 0.7s ease-out 0.1s both;
+}
+
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* Cards */
+.cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem; max-width: 820px; width: 100%;
+  animation: fadeSlideUp 0.7s ease-out 0.2s both;
+}
+
+.card {
+  background: rgba(18, 16, 31, 0.6);
+  border: 1px solid rgba(139,92,246,0.1);
+  border-radius: 16px; padding: 2rem 1.75rem;
+  text-decoration: none; color: var(--text-primary);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.card:hover {
+  border-color: rgba(139,92,246,0.3);
+  box-shadow: 0 8px 40px rgba(139,92,246,0.08);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 0.25rem;
+}
+.card-icon.purple { background: rgba(139,92,246,0.12); color: var(--accent-purple); }
+.card-icon.blue { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
+.card-icon.cyan { background: rgba(6,182,212,0.12); color: var(--accent-cyan); }
+
+.card-title {
+  font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 1.05rem; letter-spacing: 0.01em;
+}
+
+.card-desc {
+  font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; line-height: 1.6;
+}
+
+.card-arrow {
+  margin-top: auto; padding-top: 0.5rem;
+  font-size: 0.78rem; color: var(--accent-purple); font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateX(-4px);
+}
+.card:hover .card-arrow {
+  opacity: 1; transform: translateX(0);
+}
+
+/* Footer */
+.footer {
+  position: relative; z-index: 1;
+  margin-top: 4rem; text-align: center; padding: 2rem;
+  animation: fadeSlideUp 0.7s ease-out 0.3s both;
+}
+.footer p {
+  color: var(--text-muted); font-size: 0.78rem;
+}
+
+@media (max-width: 640px) {
+  .cards { grid-template-columns: 1fr; }
+  .page { padding: 2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<div class="page">
+  <h1 class="brand"><span class="gradient">EpicSyncPro</span></h1>
+  <p class="tagline">Digital tools, delivered instantly.</p>
+
+  <div class="cards">
+
+    <a href="hekili_midnight_infographic_3.html" class="card">
+      <div class="card-icon purple">⚡</div>
+      <div class="card-title">Hekili — Midnight</div>
+      <div class="card-desc">Full infographic for Hekili v102, Patch 12.0 Prepatch Edition. All classes covered.</div>
+      <div class="card-arrow">View →</div>
+    </a>
+
+    <a href="epicsyncpro_legal.html#terms" class="card">
+      <div class="card-icon blue">📄</div>
+      <div class="card-title">Terms of Service</div>
+      <div class="card-desc">Agreement, payments, refund policy, licensing, and usage terms.</div>
+      <div class="card-arrow">Read →</div>
+    </a>
+
+    <a href="epicsyncpro_legal.html#privacy" class="card">
+      <div class="card-icon cyan">🔒</div>
+      <div class="card-title">Privacy Policy</div>
+      <div class="card-desc">How we collect, use, and protect your information. Stripe payment processing.</div>
+      <div class="card-arrow">Read →</div>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 EpicSyncPro. All rights reserved.</p>
+</div>
+
+</body>
 </html>
