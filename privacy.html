@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EpicSyncPro — Privacy Policy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --midnight: #0a0a12;
+  --void: #12101f;
+  --deep-purple: #1a1230;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --text-primary: #e8e6f0;
+  --text-secondary: #9893a8;
+  --text-muted: #5c5672;
+  --card-bg: rgba(18, 16, 31, 0.6);
+  --card-border: rgba(139, 92, 246, 0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body {
+  background: var(--midnight); color: var(--text-primary);
+  font-family: 'Outfit', sans-serif; overflow-x: hidden;
+  line-height: 1.7; font-weight: 300;
+}
+
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; z-index: 0;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+.bg-orb { position: fixed; border-radius: 50%; filter: blur(140px); z-index: 0; animation: orbFloat 20s ease-in-out infinite; }
+.bg-orb-1 { width:550px; height:550px; background:rgba(139,92,246,.07); top:-200px; right:-150px; }
+.bg-orb-2 { width:450px; height:450px; background:rgba(59,130,246,.05); bottom:10%; left:-150px; animation-delay:-7s; }
+.bg-orb-3 { width:350px; height:350px; background:rgba(6,182,212,.04); top:60%; right:5%; animation-delay:-14s; }
+@keyframes orbFloat { 0%,100%{transform:translate(0,0)} 33%{transform:translate(30px,-30px)} 66%{transform:translate(-20px,20px)} }
+
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139,92,246,0.08);
+  transition: box-shadow 0.3s ease;
+}
+.top-nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+.nav-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2rem;
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 0.25rem; }
+.nav-link {
+  padding: 0.45rem 1rem; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--text-secondary); text-decoration: none;
+  transition: all 0.25s ease; text-transform: uppercase;
+}
+.nav-link:hover { color: var(--accent-purple); background: rgba(139,92,246,0.08); }
+.nav-link.active { color: var(--accent-purple); background: rgba(139,92,246,0.08); }
+
+.page-wrapper { position: relative; z-index: 1; }
+.container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+.legal-hero {
+  padding: 10rem 2rem 4rem; text-align: center; position: relative;
+}
+.legal-hero::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 100px; padding: 0.4rem 1.1rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-purple); margin-bottom: 1.5rem;
+  animation: fadeIn 0.6s ease-out;
+}
+.hero-label::before {
+  content: ''; width: 5px; height: 5px; background: var(--accent-green);
+  border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.legal-hero h1 {
+  font-family: 'Cinzel', serif; font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em; line-height: 1.15;
+  margin-bottom: 0.75rem;
+  animation: fadeSlideUp 0.7s ease-out 0.1s both;
+}
+.legal-hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.legal-hero .sub {
+  font-size: 0.95rem; color: var(--text-secondary); font-weight: 300;
+  animation: fadeSlideUp 0.7s ease-out 0.2s both;
+}
+.legal-hero .sub span { color: var(--text-muted); font-size: 0.85rem; }
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.legal-section {
+  margin-bottom: 2.5rem; padding: 2rem 2.25rem;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 16px; backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.legal-section:hover {
+  border-color: rgba(139,92,246,0.2);
+  box-shadow: 0 4px 30px rgba(139,92,246,0.04);
+}
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; font-weight: 500;
+  color: var(--accent-purple); opacity: 0.6;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.legal-section h3 {
+  font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 1.15rem; color: var(--text-primary);
+  margin-bottom: 1rem; letter-spacing: 0.01em;
+}
+.legal-section p {
+  color: var(--text-secondary); font-size: 0.92rem;
+  margin-bottom: 0.85rem; line-height: 1.75;
+}
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul { list-style: none; padding: 0; margin: 0.75rem 0; }
+.legal-section ul li {
+  position: relative; padding-left: 1.4rem;
+  color: var(--text-secondary); font-size: 0.92rem;
+  margin-bottom: 0.5rem; line-height: 1.65;
+}
+.legal-section ul li::before {
+  content: ''; position: absolute; left: 0; top: 0.6em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-purple); opacity: 0.5;
+}
+.highlight { color: var(--accent-cyan); font-weight: 400; }
+.emphasis { color: var(--text-primary); font-weight: 500; }
+
+.legal-footer {
+  text-align: center; padding: 4rem 2rem 3rem;
+  border-top: 1px solid rgba(139,92,246,0.06); margin-top: 3rem;
+}
+.footer-brand {
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.footer-note { color: var(--text-muted); font-size: 0.78rem; line-height: 1.6; }
+.footer-note a { color: var(--accent-purple); text-decoration: none; transition: color 0.2s; }
+.footer-note a:hover { color: var(--accent-cyan); }
+
+.back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2);
+  color: var(--accent-purple); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; visibility: hidden;
+  transition: all 0.3s ease; backdrop-filter: blur(10px);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: rgba(139,92,246,0.2); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139,92,246,0.15); }
+
+@media (max-width: 640px) {
+  .container { padding: 0 1.25rem; }
+  .legal-section { padding: 1.5rem 1.5rem; border-radius: 12px; }
+  .nav-inner { padding: 0.75rem 1.25rem; }
+  .nav-link { padding: 0.4rem 0.7rem; font-size: 0.72rem; }
+  .legal-hero { padding: 8rem 1.5rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+
+<nav class="top-nav" id="topNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EpicSyncPro</a>
+    <div class="nav-links">
+      <a href="terms.html" class="nav-link">Terms</a>
+      <a href="privacy.html" class="nav-link active">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <header class="legal-hero">
+    <div class="hero-label">Legal</div>
+    <h1><span class="gradient-text">Privacy Policy</span></h1>
+    <p class="sub">Last Updated: February 2026 <span>&nbsp;·&nbsp; EpicSyncPro</span></p>
+  </header>
+
+  <main class="container">
+
+    <section class="legal-section">
+      <div class="section-number">Section 01</div>
+      <h3>Information We Collect</h3>
+      <p>We may collect the following information:</p>
+      <ul>
+        <li>Email address</li>
+        <li>Payment confirmation details (processed by Stripe)</li>
+        <li>IP address and basic device information</li>
+        <li>Account and access activity logs</li>
+        <li>Support communications</li>
+      </ul>
+      <p>Payment details are processed securely by <span class="emphasis">Stripe</span> and are never stored on our servers.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 02</div>
+      <h3>How We Use Information</h3>
+      <p>Information is used to:</p>
+      <ul>
+        <li>Deliver digital services</li>
+        <li>Provide account access and support</li>
+        <li>Prevent fraud and abuse</li>
+        <li>Maintain system security</li>
+        <li>Comply with legal and payment processor requirements</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 03</div>
+      <h3>Payment Processing</h3>
+      <p>All payments are processed by <span class="emphasis">Stripe</span>. EpicSyncPro does not store full payment card details.</p>
+      <p>Stripe's Privacy Policy applies to all payment transactions.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 04</div>
+      <h3>Logs & Records</h3>
+      <p>EpicSyncPro maintains system logs, access records, and delivery confirmations for:</p>
+      <ul>
+        <li>Security</li>
+        <li>Fraud prevention</li>
+        <li>Dispute resolution</li>
+        <li>Legal compliance</li>
+      </ul>
+      <p>These records may be used as evidence in payment disputes.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 05</div>
+      <h3>Information Sharing</h3>
+      <p><span class="emphasis">We do not sell or rent personal information.</span></p>
+      <p>Information may be shared only:</p>
+      <ul>
+        <li>With payment processors (e.g., Stripe)</li>
+        <li>To comply with legal obligations</li>
+        <li>To protect EpicSyncPro against fraud, abuse, or disputes</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 06</div>
+      <h3>Data Retention</h3>
+      <p>Information is retained only as long as necessary for:</p>
+      <ul>
+        <li>Service delivery</li>
+        <li>Legal compliance</li>
+        <li>Dispute resolution</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 07</div>
+      <h3>Customer Responsibility</h3>
+      <p>Customers are responsible for providing accurate contact information. EpicSyncPro is not responsible for issues arising from incorrect or false information.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 08</div>
+      <h3>Third-Party Services</h3>
+      <p>EpicSyncPro may link to third-party services. We are not responsible for their privacy practices.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 09</div>
+      <h3>Your Rights</h3>
+      <p>Depending on your jurisdiction, you may request:</p>
+      <ul>
+        <li>Access to your data</li>
+        <li>Correction of inaccurate information</li>
+        <li>Deletion of your account data, where legally permissible</li>
+      </ul>
+      <p>Requests may be subject to verification and legal retention requirements.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 10</div>
+      <h3>Changes to This Policy</h3>
+      <p>EpicSyncPro may update this Privacy Policy at any time. Continued use constitutes acceptance.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-number">Section 11</div>
+      <h3>Contact</h3>
+      <p>Privacy-related inquiries can be submitted through official contact channels listed on <span class="highlight">epicsyncpro.com</span>.</p>
+    </section>
+
+  </main>
+
+  <footer class="legal-footer">
+    <div class="footer-brand">EpicSyncPro</div>
+    <p class="footer-note">
+      © 2026 EpicSyncPro. All rights reserved.<br>
+      <a href="terms.html">Terms of Service</a> · <a href="https://epicsyncpro.com">epicsyncpro.com</a>
+    </p>
+  </footer>
+
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+const nav = document.getElementById('topNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 600));
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.legal-section').forEach(s => {
+  s.style.opacity = '0'; s.style.transform = 'translateY(16px)';
+  s.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(s);
+});
+</script>
+</body>
+</html>
