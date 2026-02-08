@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EpicSyncPro — Customer Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --midnight: #0a0a12;
+  --void: #12101f;
+  --deep-purple: #1a1230;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+  --accent-discord: #5865F2;
+  --text-primary: #e8e6f0;
+  --text-secondary: #9893a8;
+  --text-muted: #5c5672;
+  --card-bg: rgba(18, 16, 31, 0.6);
+  --card-border: rgba(139, 92, 246, 0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--midnight); color: var(--text-primary);
+  font-family: 'Outfit', sans-serif; overflow-x: hidden;
+  line-height: 1.7; font-weight: 300;
+}
+
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; z-index: 0;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+.bg-orb { position: fixed; border-radius: 50%; filter: blur(140px); z-index: 0; animation: orbFloat 20s ease-in-out infinite; }
+.bg-orb-1 { width:550px; height:550px; background:rgba(139,92,246,.07); top:-200px; right:-150px; }
+.bg-orb-2 { width:450px; height:450px; background:rgba(59,130,246,.05); bottom:10%; left:-150px; animation-delay:-7s; }
+.bg-orb-3 { width:350px; height:350px; background:rgba(6,182,212,.04); top:60%; right:5%; animation-delay:-14s; }
+@keyframes orbFloat { 0%,100%{transform:translate(0,0)} 33%{transform:translate(30px,-30px)} 66%{transform:translate(-20px,20px)} }
+
+/* Nav */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139,92,246,0.08);
+  transition: box-shadow 0.3s ease;
+}
+.top-nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+.nav-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2rem;
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 0.25rem; }
+.nav-link {
+  padding: 0.45rem 1rem; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--text-secondary); text-decoration: none;
+  transition: all 0.25s ease; text-transform: uppercase;
+}
+.nav-link:hover { color: var(--accent-purple); background: rgba(139,92,246,0.08); }
+.nav-link.active { color: var(--accent-purple); background: rgba(139,92,246,0.08); }
+
+.page-wrapper { position: relative; z-index: 1; }
+.container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+/* Hero */
+.support-hero {
+  padding: 10rem 2rem 4rem; text-align: center; position: relative;
+}
+.support-hero::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 100px; padding: 0.4rem 1.1rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-green); margin-bottom: 1.5rem;
+  animation: fadeIn 0.6s ease-out;
+}
+.hero-label::before {
+  content: ''; width: 5px; height: 5px; background: var(--accent-green);
+  border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.support-hero h1 {
+  font-family: 'Cinzel', serif; font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em; line-height: 1.15;
+  margin-bottom: 0.75rem;
+  animation: fadeSlideUp 0.7s ease-out 0.1s both;
+}
+.support-hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.support-hero .sub {
+  font-size: 1rem; color: var(--text-secondary); font-weight: 300;
+  max-width: 520px; margin: 0 auto;
+  animation: fadeSlideUp 0.7s ease-out 0.2s both;
+}
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* Contact Cards */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1.5rem; margin-top: 3rem;
+}
+
+.contact-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 16px; backdrop-filter: blur(10px);
+  padding: 2.25rem 2.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none; color: inherit; display: block;
+}
+.contact-card:hover {
+  border-color: rgba(139,92,246,0.25);
+  box-shadow: 0 8px 40px rgba(139,92,246,0.06);
+  transform: translateY(-3px);
+}
+
+.contact-card-header {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+}
+
+.contact-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.contact-icon.discord { background: rgba(88,101,242,0.12); color: var(--accent-discord); }
+.contact-icon.email { background: rgba(139,92,246,0.12); color: var(--accent-purple); }
+.contact-icon.web { background: rgba(6,182,212,0.12); color: var(--accent-cyan); }
+
+.contact-card-header h3 {
+  font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 1.15rem; letter-spacing: 0.01em;
+}
+
+.contact-card p {
+  color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;
+  margin-bottom: 0.6rem;
+}
+.contact-card p:last-of-type { margin-bottom: 0; }
+
+.contact-value {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--accent-cyan);
+  word-break: break-all;
+}
+
+.contact-badge {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--accent-green);
+  margin-top: 0.75rem;
+}
+.contact-badge::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green);
+}
+
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: all 0.3s ease; cursor: pointer;
+  border: none; margin-top: 1.25rem;
+}
+.cta-discord {
+  background: linear-gradient(135deg, #5865F2, #7289DA); color: #fff;
+  box-shadow: 0 4px 20px rgba(88,101,242,0.25);
+}
+.cta-discord:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(88,101,242,0.4); }
+.cta-email {
+  background: rgba(139,92,246,0.1); color: var(--accent-purple);
+  border: 1px solid rgba(139,92,246,0.25);
+}
+.cta-email:hover { background: rgba(139,92,246,0.2); transform: translateY(-2px); }
+.cta-web {
+  background: rgba(6,182,212,0.1); color: var(--accent-cyan);
+  border: 1px solid rgba(6,182,212,0.25);
+}
+.cta-web:hover { background: rgba(6,182,212,0.2); transform: translateY(-2px); }
+
+/* Info Section */
+.info-section {
+  margin-top: 3.5rem; padding: 2.25rem 2.5rem;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 16px; backdrop-filter: blur(10px);
+}
+.info-section h3 {
+  font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 1.15rem; margin-bottom: 1.25rem;
+}
+.info-section p {
+  color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;
+  margin-bottom: 0.85rem;
+}
+.info-section p:last-child { margin-bottom: 0; }
+.info-section ul { list-style: none; padding: 0; margin: 0.75rem 0; }
+.info-section ul li {
+  position: relative; padding-left: 1.4rem;
+  color: var(--text-secondary); font-size: 0.92rem;
+  margin-bottom: 0.5rem; line-height: 1.65;
+}
+.info-section ul li::before {
+  content: ''; position: absolute; left: 0; top: 0.6em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-purple); opacity: 0.5;
+}
+.highlight { color: var(--accent-cyan); font-weight: 400; }
+.emphasis { color: var(--text-primary); font-weight: 500; }
+
+/* Footer */
+.legal-footer {
+  text-align: center; padding: 4rem 2rem 3rem;
+  border-top: 1px solid rgba(139,92,246,0.06); margin-top: 4rem;
+}
+.footer-brand {
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.footer-note { color: var(--text-muted); font-size: 0.78rem; line-height: 1.8; }
+.footer-note a { color: var(--accent-purple); text-decoration: none; transition: color 0.2s; }
+.footer-note a:hover { color: var(--accent-cyan); }
+
+@media (max-width: 640px) {
+  .container { padding: 0 1.25rem; }
+  .contact-card { padding: 1.75rem 1.5rem; border-radius: 12px; }
+  .info-section { padding: 1.75rem 1.5rem; border-radius: 12px; }
+  .nav-inner { padding: 0.75rem 1.25rem; }
+  .nav-link { padding: 0.4rem 0.7rem; font-size: 0.72rem; }
+  .support-hero { padding: 8rem 1.5rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+
+<nav class="top-nav" id="topNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">EpicSyncPro</a>
+    <div class="nav-links">
+      <a href="support.html" class="nav-link active">Support</a>
+      <a href="terms.html" class="nav-link">Terms</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <header class="support-hero">
+    <div class="hero-label">Customer Support</div>
+    <h1><span class="gradient-text">How Can We Help?</span></h1>
+    <p class="sub">Get in touch with EpicSyncPro support through any of the channels below. We're here to help with setup, access, and any questions.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="contact-grid">
+
+      <!-- Discord -->
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-icon discord">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+          </div>
+          <h3>Discord — Live Support</h3>
+        </div>
+        <p>Our primary support channel. Join the EpicSync Discord server to get direct help with installation, setup, account access, and troubleshooting.</p>
+        <p>Message <span class="emphasis">EpicSync</span> directly in the server for fastest assistance.</p>
+        <div class="contact-badge">Recommended · Fastest Response</div>
+        <br>
+        <a href="https://discord.com/invite/JDVNdp2J7J" target="_blank" rel="noopener" class="cta-btn cta-discord">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+          Join EpicSync Discord
+        </a>
+      </div>
+
+      <!-- Email -->
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-icon email">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h3>Email Support</h3>
+        </div>
+        <p>For account inquiries, billing questions, access issues, or any formal support requests, reach us via email.</p>
+        <p>We aim to respond within <span class="emphasis">24–48 hours</span>.</p>
+        <div class="contact-value">support@epicsyncpro.com</div>
+        <br>
+        <a href="mailto:support@epicsyncpro.com" class="cta-btn cta-email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Send Email
+        </a>
+      </div>
+
+      <!-- Website Contact Form -->
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-icon web">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Website Contact Form</h3>
+        </div>
+        <p>Submit a support request directly through our website. Use the contact form for general inquiries, partnership requests, or feedback.</p>
+        <div class="contact-value">www.epicsyncpro.com</div>
+        <br>
+        <a href="https://www.epicsyncpro.com/" target="_blank" rel="noopener" class="cta-btn cta-web">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Visit Website
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Before You Contact Us -->
+    <div class="info-section">
+      <h3>Before You Contact Us</h3>
+      <p>To help us resolve your issue as quickly as possible, please have the following ready:</p>
+      <ul>
+        <li>The <span class="emphasis">email address</span> used at checkout</li>
+        <li>Your <span class="emphasis">order confirmation</span> or transaction ID</li>
+        <li>A clear description of the issue you're experiencing</li>
+        <li>Any relevant screenshots or error messages</li>
+      </ul>
+      <p>Please allow reasonable time for our team to respond before initiating any payment disputes. Refer to our <a href="terms.html" style="color:var(--accent-purple);text-decoration:none;">Terms of Service</a> for full details.</p>
+    </div>
+
+    <!-- Support Hours -->
+    <div class="info-section" style="margin-top:1.5rem;">
+      <h3>Support Policy</h3>
+      <p>EpicSyncPro provides customer support for all active customers. Our support covers:</p>
+      <ul>
+        <li>Account access and activation issues</li>
+        <li>Installation and setup assistance</li>
+        <li>Billing and payment inquiries</li>
+        <li>General product questions</li>
+      </ul>
+      <p>For the fastest response, we recommend using <span class="emphasis">Discord</span> for real-time help, or <span class="emphasis">email</span> for formal requests.</p>
+    </div>
+
+  </main>
+
+  <footer class="legal-footer">
+    <div class="footer-brand">EpicSyncPro</div>
+    <p class="footer-note">
+      © 2026 EpicSyncPro. All rights reserved.<br>
+      <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="https://www.epicsyncpro.com">epicsyncpro.com</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+const nav = document.getElementById('topNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.contact-card, .info-section').forEach(s => {
+  s.style.opacity = '0'; s.style.transform = 'translateY(16px)';
+  s.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(s);
+});
+</script>
+</body>
+</html>
