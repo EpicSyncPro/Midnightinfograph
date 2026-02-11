@@ -484,14 +484,18 @@
     <div class="container">
       <div class="fade-in"><div class="section-label">Contact</div><div class="section-title">Get In Touch</div></div>
       <p style="color:var(--text-muted);margin-bottom:32px;font-size:16px">Send us a message and we'll get back to you in no time!</p>
-      <div class="contact-form fade-in">
-        <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your name"></div>
-        <div class="form-group"><label for="discord">Discord</label><input type="text" id="discord" placeholder="Your Discord username"></div>
-        <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="How can we help?"></textarea></div>
-        <button class="btn btn-primary" style="width:100%" onclick="this.textContent='Message Sent! ✓';this.style.opacity='0.7'">Submit</button>
+      <form class="contact-form fade-in" action="https://formsubmit.co/support@epicsyncpro.com" method="POST">
+        <input type="hidden" name="_subject" value="New EpicSync Contact Form Submission">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://www.epicsyncpro.com">
+        <div class="form-group"><label for="name">Name</label><input type="text" name="name" id="name" placeholder="Your name" required></div>
+        <div class="form-group"><label for="discord">Discord</label><input type="text" name="discord" id="discord" placeholder="Your Discord username"></div>
+        <div class="form-group"><label for="message">Message</label><textarea name="message" id="message" placeholder="How can we help?" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Submit</button>
         <p style="text-align:center;color:var(--text-muted);font-size:14px;margin-top:20px">or reach us instantly on Discord</p>
         <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-discord" style="width:100%;margin-top:8px">Join Our Discord</a>
-      </div>
+      </form>
     </div>
   </section>
 
