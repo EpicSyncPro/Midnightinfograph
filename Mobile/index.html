@@ -77,8 +77,8 @@
     .btn-outline { background:transparent; color:#c0bcd5; border:1.5px solid rgba(139,92,246,.35); box-shadow:0 0 15px rgba(139,92,246,.08); }
     .btn-outline:hover { border-color:rgba(139,92,246,.6); color:#fff; box-shadow:0 0 25px rgba(139,92,246,.15); transform:translateY(-2px); }
     .btn-nav { min-height:40px; padding:8px 20px; font-size:11px; letter-spacing:1.5px; }
-    .btn-discord { background:linear-gradient(135deg,#5865F2,#4752C4); color:#fff; box-shadow:0 4px 25px rgba(88,101,242,.35),inset 0 1px 0 rgba(255,255,255,.15); gap:10px; }
-    .btn-discord:hover { transform:translateY(-2px); box-shadow:0 8px 40px rgba(88,101,242,.5),inset 0 1px 0 rgba(255,255,255,.15); }
+    .btn-discord { background:linear-gradient(135deg,#5865F2,#4752C4); color:#fff; box-shadow:0 4px 25px rgba(88,101,242,.35); }
+    .btn-discord:hover { transform:translateY(-2px); box-shadow:0 8px 40px rgba(88,101,242,.5); }
 
     /* HERO */
     .hero { position:relative; min-height:90vh; display:flex; align-items:center; overflow:hidden; }
@@ -269,12 +269,6 @@
 
     .divider-glow { height:1px; background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent); opacity:.3; max-width:300px; margin:0 auto 48px; }
 
-    .discord-link { display:inline-flex; align-items:center; justify-content:center; color:#b0acc8; transition:color .3s, transform .3s; }
-    .discord-link:hover { color:#5865F2; transform:translateY(-2px); }
-    .footer-social { display:flex; gap:12px; margin-bottom:8px; }
-    .footer-social .discord-link { color:var(--text-muted); }
-    .footer-social .discord-link:hover { color:#5865F2; }
-
     @media(max-width:480px) { .hero-content{padding:60px 0 40px} section{padding:56px 0} .hero-buttons{flex-direction:column} .hero-buttons .btn{width:100%;text-align:center} .gallery-grid{grid-template-columns:1fr} }
     @media(min-width:769px) { .hero-content{max-width:60%} }
 
@@ -300,9 +294,7 @@
         <img src="https://static.wixstatic.com/media/0b29b2_7939a55b32c34bf7b8e295451957be2f~mv2.png/v1/fill/w_209,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20(3)_edited.png" alt="EpicSync Logo" loading="eager">
       </a>
       <div class="nav-actions">
-        <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="discord-link" aria-label="Join our Discord" title="Join our Discord">
-          <svg width="28" height="28" viewBox="0 -28.5 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.824 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.824 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="currentColor"/></svg>
-        </a>
+        <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-outline btn-nav" style="border-color:rgba(88,101,242,.4);color:#7289DA">Discord</a>
         <a href="https://buy.stripe.com/5kQbJ15dH1xOegnbTS4F20j" class="btn btn-primary btn-nav">Buy Now</a>
         <a href="#contact" class="btn btn-outline btn-nav">Contact Us</a>
       </div>
@@ -337,12 +329,7 @@
         <a href="#about" class="btn btn-outline">Learn More</a>
         <a href="#contact" class="btn btn-outline">Contact Us</a>
       </div>
-      <div style="margin-top:16px;opacity:0;animation:fadeUp .6s ease forwards .9s;">
-        <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-discord">
-          <svg width="22" height="22" viewBox="0 -28.5 256 256" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.824 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.824 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="currentColor"/></svg>
-          Join for Information
-        </a>
-      </div>
+      <div style="margin-top:16px;opacity:0;animation:fadeUp .6s ease forwards .9s"><a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-discord">Join for Information</a></div>
     </div>
   </section>
 
@@ -501,14 +488,9 @@
         <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your name"></div>
         <div class="form-group"><label for="discord">Discord</label><input type="text" id="discord" placeholder="Your Discord username"></div>
         <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="How can we help?"></textarea></div>
-        <button class="btn btn-primary" style="width:100%" id="submitBtn" onclick="sendContactForm()">Submit</button>
-        <div style="text-align:center;margin-top:20px">
-          <p style="color:var(--text-muted);font-size:14px;margin-bottom:12px">— or reach us instantly on Discord —</p>
-          <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-outline" style="gap:10px">
-            <svg width="20" height="20" viewBox="0 -28.5 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.824 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.824 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="currentColor"/></svg>
-            Join Our Discord
-          </a>
-        </div>
+        <button class="btn btn-primary" style="width:100%" onclick="this.textContent='Message Sent! ✓';this.style.opacity='0.7'">Submit</button>
+        <p style="text-align:center;color:var(--text-muted);font-size:14px;margin-top:20px">or reach us instantly on Discord</p>
+        <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="btn btn-discord" style="width:100%;margin-top:8px">Join Our Discord</a>
       </div>
     </div>
   </section>
@@ -518,12 +500,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="https://static.wixstatic.com/media/0b29b2_7939a55b32c34bf7b8e295451957be2f~mv2.png/v1/fill/w_180,h_215,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20(3)_edited.png" alt="EpicSync" loading="lazy">
-          <div class="footer-social">
-            <a href="https://discord.gg/JDVNdp2J7J" target="_blank" class="discord-link" aria-label="Join our Discord" title="Join our Discord">
-              <svg width="32" height="32" viewBox="0 -28.5 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.824 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.824 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="currentColor"/></svg>
-            </a>
-          </div>
-          <p style="color:var(--text-muted);font-size:14px">@epicsync on Discord</p>
+          <p style="color:var(--text-muted);font-size:14px"><a href="https://discord.gg/JDVNdp2J7J" target="_blank" style="color:#7289DA">Join Discord</a> · @epicsync on Discord</p>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -538,7 +515,7 @@
         <div>
           <h4>Support</h4>
           <ul class="footer-links">
-            <li><a href="/cdn-cgi/l/email-protection#e695939696899492a683968f85959f8885969489c885898b"><span class="__cf_email__" data-cfemail="dba8aeababb4a9af9bbeabb2b8a8a2b5b8aba9b4f5b8b4b6">[email&#160;protected]</span></a></li>
+            <li><a href="/cdn-cgi/l/email-protection#f1828481819e8385b19481989282889f9281839edf929e9c"><span class="__cf_email__" data-cfemail="e4979194948b9690a481948d87979d8a8794968bca878b89">[email&#160;protected]</span></a></li>
             <li><a href="https://epicsyncpro.github.io/Midnightinfograph/terms.html">Terms of Service</a></li>
             <li><a href="https://epicsyncpro.github.io/Midnightinfograph/privacy.html">Privacy Policy</a></li>
             <li><a href="https://epicsyncpro.github.io/Midnightinfograph/support.html">Customer Portal</a></li>
@@ -550,25 +527,10 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    function sendContactForm() {
-      var nameVal = document.getElementById('name').value.trim();
-      var discordVal = document.getElementById('discord').value.trim();
-      var messageVal = document.getElementById('message').value.trim();
-      var btn = document.getElementById('submitBtn');
-      if (!nameVal || !messageVal) {
-        btn.textContent = 'Please fill in Name & Message';
-        btn.style.opacity = '0.7';
-        setTimeout(function(){ btn.textContent = 'Submit'; btn.style.opacity = '1'; }, 2500);
-        return;
-      }
-      var subject = encodeURIComponent('EpicSync Contact: ' + nameVal);
-      var body = encodeURIComponent('Name: ' + nameVal + '\nDiscord: ' + (discordVal || 'N/A') + '\n\nMessage:\n' + messageVal);
-      window.location.href = 'mailto:support@epicsyncpro.com?subject=' + subject + '&body=' + body;
-      btn.textContent = 'Message Sent! ✓';
-      btn.style.opacity = '0.7';
-      setTimeout(function(){ btn.textContent = 'Submit'; btn.style.opacity = '1'; }, 3000);
-    }
     const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));t&&(e.preventDefault(),t.scrollIntoView({behavior:'smooth',block:'start'}))})});
-    !function(){const c=document.getElementById('particles');if(!c)return;const cols=['rgba(139,92,246,.4)','rgba(6,182,212,.35)','rgba(59,130,246,.3)','rgba(167,139,250,.3)','rgba(103,232,249,.25)'];for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*3+1;p.style.c
+    !function(){const c=document.getElementById('particles');if(!c)return;const cols=['rgba(139,92,246,.4)','rgba(6,182,212,.35)','rgba(59,130,246,.3)','rgba(167,139,250,.3)','rgba(103,232,249,.25)'];for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*3+1;p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+cols[Math.floor(Math.random()*cols.length)]+';animation-duration:'+(Math.random()*15+10)+'s;animation-delay:'+(Math.random()*10)+'s';c.appendChild(p)}}();
+  </script>
+</body>
+</html>
