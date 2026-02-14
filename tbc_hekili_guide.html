@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hekili TBC Anniversary Edition | EpicSyncPro - The Burning Crusade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #080a08;
+            --bg-card: #0f1510;
+            --bg-card-hover: #151f18;
+            --border-color: #1e3d28;
+            --text-primary: #e0f0e4;
+            --text-secondary: #88a090;
+            --text-muted: #4a6050;
+            --accent-fel: #00ff66;
+            --accent-fel-dim: #00aa44;
+            --accent-fel-dark: #006633;
+            --accent-red: #c73e3e;
+            --accent-green: #00ff66;
+            --accent-blue: #3e8ec7;
+            --accent-purple: #8e3ec7;
+            --warrior-color: #c79c6e;
+            --gradient-hero: linear-gradient(135deg, #0a150d 0%, #080a08 50%, #0d1510 100%);
+            --gradient-fel: linear-gradient(135deg, #00ff66 0%, #00aa44 100%);
+            --glow-fel: 0 0 30px rgba(0, 255, 102, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 255, 102, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 170, 68, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse 60% 40% at 20% 100%, rgba(0, 102, 51, 0.05) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.9);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-fel);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-fel);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--gradient-fel);
+            color: var(--bg-dark);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(0, 255, 102, 0); }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-fel) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero h1 .tbc {
+            color: var(--accent-fel);
+            -webkit-text-fill-color: var(--accent-fel);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-note {
+            margin-top: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-fel);
+            color: var(--bg-dark);
+            box-shadow: var(--glow-fel);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(0, 255, 102, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-fel);
+            color: var(--accent-fel);
+        }
+
+        /* Feature Grid */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+
+        .section-title span {
+            color: var(--accent-fel);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-fel);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-fel-dim);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Class Support */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .class-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: scale(1.05);
+            border-color: var(--class-color, var(--accent-fel));
+            box-shadow: 0 0 20px rgba(var(--class-rgb, 0, 255, 102), 0.2);
+        }
+
+        .class-card .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .class-card .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .class-card.warrior { --class-color: #c79c6e; }
+        .class-card.paladin { --class-color: #f58cba; }
+        .class-card.hunter { --class-color: #abd473; }
+        .class-card.rogue { --class-color: #fff569; }
+        .class-card.priest { --class-color: #ffffff; }
+        .class-card.shaman { --class-color: #0070de; }
+        .class-card.mage { --class-color: #69ccf0; }
+        .class-card.warlock { --class-color: #9482c9; }
+        .class-card.druid { --class-color: #ff7d0a; }
+
+        /* Installation Guide */
+        .install-section {
+            padding: 60px 0;
+        }
+
+        .install-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 60px;
+            bottom: -32px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-fel), transparent);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-fel);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+
+        .step-content {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .step-content code {
+            display: block;
+            background: var(--bg-dark);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-fel);
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .step-content .tip {
+            background: rgba(0, 255, 102, 0.1);
+            border-left: 3px solid var(--accent-fel);
+            padding: 12px 16px;
+            margin-top: 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+        }
+
+        .step-content .warning {
+            background: rgba(199, 62, 62, 0.1);
+            border-left: 3px solid var(--accent-red);
+            padding: 12px 16px;
+            margin-top: 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Bug Fixes Section */
+        .fixes-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 102, 0.03) 50%, transparent 100%);
+        }
+
+        .fix-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fix-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .fix-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .fix-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(62, 199, 106, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+
+        .fix-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .fix-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Rotation Packs */
+        .packs-section {
+            padding: 60px 0;
+        }
+
+        .pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .pack-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pack-card:hover {
+            border-color: var(--class-accent, var(--accent-fel));
+            transform: translateY(-4px);
+        }
+
+        /* Class Tabs */
+        .class-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 32px;
+            padding: 16px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .class-tab {
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .class-tab:hover {
+            border-color: var(--tab-color, var(--accent-fel));
+            color: var(--tab-color, var(--accent-fel));
+        }
+
+        .class-tab.active {
+            background: var(--tab-color, var(--accent-fel));
+            border-color: var(--tab-color, var(--accent-fel));
+            color: var(--bg-dark);
+        }
+
+        .class-packs {
+            display: none;
+        }
+
+        .class-packs.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pack-header {
+            background: linear-gradient(135deg, rgba(var(--class-rgb, 199, 156, 110), 0.2) 0%, transparent 100%);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pack-header .icon {
+            font-size: 2rem;
+        }
+
+        .pack-header h3 {
+            font-size: 1.3rem;
+            color: var(--class-accent, var(--warrior-color));
+        }
+
+        .pack-body {
+            padding: 24px;
+        }
+
+        .pack-body p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .rotation-list {
+            list-style: none;
+        }
+
+        .rotation-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rotation-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rotation-list .num {
+            width: 24px;
+            height: 24px;
+            background: var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--accent-fel);
+            font-weight: 600;
+        }
+
+        .rotation-list .aoe-tag {
+            margin-left: auto;
+            background: rgba(62, 142, 199, 0.2);
+            color: var(--accent-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .faq-question .arrow {
+            transition: transform 0.3s ease;
+            color: var(--accent-fel);
+        }
+
+        .faq-item.open .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 20px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(0, 255, 102, 0.1) 0%, rgba(0, 102, 51, 0.1) 100%);
+            border: 2px solid var(--accent-fel-dim);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 102, 0.05) 0%, transparent 50%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.2rem;
+        }
+
+        .cta-features {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-features span {
+            color: var(--accent-fel);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--accent-fel);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">EPIC<span>SYNC</span>PRO</a>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#install">Install</a>
+                    <a href="#packs">Packs</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="support.html">Support</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="version-badge">⚔️ v2.5.5 Anniversary Edition</div>
+                <h1>Hekili <span class="tbc">TBC</span> Classic</h1>
+                <p class="hero-subtitle">
+                    Step through the Dark Portal with confidence. Fully fixed rotation helper for 
+                    The Burning Crusade Anniversary with working ability detection and intelligent AOE switching.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://epicsyncpro.github.io/Midnightinfograph/support.html" class="btn btn-primary">
+                        🛒 Purchase to Download
+                    </a>
+                    <a href="#install" class="btn btn-secondary">
+                        📖 Installation Guide
+                    </a>
+                </div>
+                <p class="hero-note">Contact EpicSyncPro for access and licensing</p>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Why <span>Hekili TBC Fixed</span>?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">⚔️</div>
+                        <h3>Fixed Ability Detection</h3>
+                        <p>Removed broken <code>IsPlayerSpell()</code> checks that caused the infamous 3600s cooldown bug. All abilities now properly detected.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-1">
+                        <div class="feature-icon">👥</div>
+                        <h3>Smart AOE Switching</h3>
+                        <p>Added <code>damage = true</code> to all class specs enabling combat log target tracking. Hekili now correctly detects multiple enemies.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-2">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Inline AOE Conditions</h3>
+                        <p>Rotation packs use inline <code>active_enemies>=2</code> checks for reliable AOE switching without broken action list calls.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-3">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Script Crash Protection</h3>
+                        <p>EpicSync script patched with nil checks and pcall wrappers. Rotation never stops even during target switches.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-4">
+                        <div class="feature-icon">📦</div>
+                        <h3>Updated Rotation Packs</h3>
+                        <p>TBC-accurate rotations for Fury, Arms, Leveling and all specs. Based on actual TBC Classic theorycrafting.</p>
+                    </div>
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Better Targeting</h3>
+                        <p>Fixed combat detection gap between mobs. Script now works when you have a hostile target, not just "in combat".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Classes -->
+        <section class="classes" id="classes">
+            <div class="container">
+                <h2 class="section-title">All <span>9 Classes</span> Supported</h2>
+                <div class="class-grid">
+                    <div class="class-card warrior">
+                        <div class="icon">⚔️</div>
+                        <div class="name" style="color: #c79c6e;">Warrior</div>
+                    </div>
+                    <div class="class-card paladin">
+                        <div class="icon">🛡️</div>
+                        <div class="name" style="color: #f58cba;">Paladin</div>
+                    </div>
+                    <div class="class-card hunter">
+                        <div class="icon">🏹</div>
+                        <div class="name" style="color: #abd473;">Hunter</div>
+                    </div>
+                    <div class="class-card rogue">
+                        <div class="icon">🗡️</div>
+                        <div class="name" style="color: #fff569;">Rogue</div>
+                    </div>
+                    <div class="class-card priest">
+                        <div class="icon">✨</div>
+                        <div class="name" style="color: #ffffff;">Priest</div>
+                    </div>
+                    <div class="class-card shaman">
+                        <div class="icon">⚡</div>
+                        <div class="name" style="color: #0070de;">Shaman</div>
+                    </div>
+                    <div class="class-card mage">
+                        <div class="icon">❄️</div>
+                        <div class="name" style="color: #69ccf0;">Mage</div>
+                    </div>
+                    <div class="class-card warlock">
+                        <div class="icon">🔮</div>
+                        <div class="name" style="color: #9482c9;">Warlock</div>
+                    </div>
+                    <div class="class-card druid">
+                        <div class="icon">🐻</div>
+                        <div class="name" style="color: #ff7d0a;">Druid</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Guide -->
+        <section class="install-section" id="install">
+            <div class="container">
+                <h2 class="section-title">Installation <span>Guide</span></h2>
+                <div class="install-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Close World of Warcraft</h3>
+                            <p>Make sure WoW is completely closed before modifying addon files.</p>
+                            <div class="warning">⚠️ Do not try to install while the game is running.</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Navigate to AddOns Folder</h3>
+                            <p>Find your WoW Classic TBC installation:</p>
+                            <code>World of Warcraft/_classic_/Interface/AddOns/</code>
+                            <div class="tip">💡 On Mac: /Applications/World of Warcraft/_classic_/Interface/AddOns/</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Delete Old Hekili Folder</h3>
+                            <p>If you have an existing Hekili installation, <strong>delete the entire folder</strong>:</p>
+                            <code>Delete: Interface/AddOns/Hekili/</code>
+                            <div class="warning">⚠️ Important: The old files will conflict with the fix. Delete completely.</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Extract Hekili-Fixed.zip</h3>
+                            <p>Extract the downloaded zip file into your AddOns folder:</p>
+                            <code>Interface/AddOns/Hekili/</code>
+                            <div class="tip">💡 The folder structure should be: AddOns/Hekili/Hekili.toc</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Install EpicSync Script (Optional)</h3>
+                            <p>If using the automation script, replace your script with <code>dddvADVANCEDEDITpots_Fixed.lua</code></p>
+                            <div class="tip">💡 The script fix adds crash protection and better targeting.</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>Launch WoW & Verify</h3>
+                            <p>Start World of Warcraft, enable the addon, and verify:</p>
+                            <code>/hekili</code>
+                            <p style="margin-top: 12px;">Check that abilities show real cooldowns (not 3600s) in the debug snapshot.</p>
+                            <div class="tip">💡 Enable enemy nameplates: <code>/console nameplateShowEnemies 1</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bug Fixes -->
+        <section class="fixes-section" id="fixes">
+            <div class="container">
+                <h2 class="section-title">Bugs <span>Fixed</span></h2>
+                <div class="fix-list">
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>3600s Cooldown Bug</h4>
+                            <p>Removed broken <code>known = function()</code> checks from all 9 class files. Abilities now use Hekili's default detection.</p>
+                        </div>
+                    </div>
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>AOE Detection Not Working</h4>
+                            <p>Added <code>damage = true</code> to all spec RegisterOptions. Combat log target tracking now enabled.</p>
+                        </div>
+                    </div>
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>Rotation Stops on Second Mob</h4>
+                            <p>Added nil checks before accessing <code>Hekili_Primary_B1.Ability.name</code>. Script no longer crashes on target switch.</p>
+                        </div>
+                    </div>
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>Loop Dies on Error</h4>
+                            <p>Wrapped <code>castRecommendedAbility()</code> in pcall. Timer always reschedules even if error occurs.</p>
+                        </div>
+                    </div>
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>Combat Detection Gap</h4>
+                            <p>Fixed targeting logic to work when hostile target exists, not just when <code>UnitAffectingCombat</code> returns true.</p>
+                        </div>
+                    </div>
+                    <div class="fix-item">
+                        <div class="fix-icon">✓</div>
+                        <div class="fix-content">
+                            <h4>run_action_list Not Working</h4>
+                            <p>Rewrote packs to use inline <code>active_enemies>=2</code> conditions instead of separate AOE action lists.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rotation Packs -->
+        <section class="packs-section" id="packs">
+            <div class="container">
+                <h2 class="section-title">Rotation <span>Packs</span> - All Classes</h2>
+                
+                <!-- Class Tabs -->
+                <div class="class-tabs">
+                    <button class="class-tab active" onclick="showClass('warrior')" style="--tab-color: #c79c6e;">⚔️ Warrior</button>
+                    <button class="class-tab" onclick="showClass('paladin')" style="--tab-color: #f58cba;">🛡️ Paladin</button>
+                    <button class="class-tab" onclick="showClass('hunter')" style="--tab-color: #abd473;">🏹 Hunter</button>
+                    <button class="class-tab" onclick="showClass('rogue')" style="--tab-color: #fff569;">🗡️ Rogue</button>
+                    <button class="class-tab" onclick="showClass('priest')" style="--tab-color: #ffffff;">✨ Priest</button>
+                    <button class="class-tab" onclick="showClass('shaman')" style="--tab-color: #0070de;">⚡ Shaman</button>
+                    <button class="class-tab" onclick="showClass('mage')" style="--tab-color: #69ccf0;">❄️ Mage</button>
+                    <button class="class-tab" onclick="showClass('warlock')" style="--tab-color: #9482c9;">🔮 Warlock</button>
+                    <button class="class-tab" onclick="showClass('druid')" style="--tab-color: #ff7d0a;">🐻 Druid</button>
+                </div>
+
+                <!-- WARRIOR -->
+                <div class="class-packs active" id="warrior-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #c79c6e;">
+                            <div class="pack-header">
+                                <span class="icon">⚔️</span>
+                                <h3>TBC Fury</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Dual-wield Fury with Bloodthirst and Whirlwind priority.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Sweeping Strikes <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">2</span> Whirlwind <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">3</span> Bloodthirst</li>
+                                    <li><span class="num">4</span> Whirlwind</li>
+                                    <li><span class="num">5</span> Cleave (40+ rage) <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">6</span> Execute (&lt;20%)</li>
+                                    <li><span class="num">7</span> Heroic Strike (50+ rage)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #c79c6e;">
+                            <div class="pack-header">
+                                <span class="icon">🗡️</span>
+                                <h3>TBC Arms</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Two-handed Arms with Mortal Strike and Slam weaving.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Sweeping Strikes <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">2</span> Whirlwind <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">3</span> Mortal Strike</li>
+                                    <li><span class="num">4</span> Execute (&lt;20%)</li>
+                                    <li><span class="num">5</span> Whirlwind</li>
+                                    <li><span class="num">6</span> Overpower</li>
+                                    <li><span class="num">7</span> Cleave <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">8</span> Slam (30+ rage)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #c79c6e;">
+                            <div class="pack-header">
+                                <span class="icon">📈</span>
+                                <h3>TBC Leveling</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Universal leveling rotation for any spec.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Sweeping Strikes <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">2</span> Whirlwind <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">3</span> MS / BT (if talented)</li>
+                                    <li><span class="num">4</span> Execute (&lt;20%)</li>
+                                    <li><span class="num">5</span> Overpower</li>
+                                    <li><span class="num">6</span> Cleave <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">7</span> Heroic Strike / Slam</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #c79c6e;">
+                            <div class="pack-header">
+                                <span class="icon">🛡️</span>
+                                <h3>TBC Protection</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Tank rotation with Shield Slam and threat generation.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Shield Slam</li>
+                                    <li><span class="num">2</span> Revenge</li>
+                                    <li><span class="num">3</span> Devastate</li>
+                                    <li><span class="num">4</span> Thunder Clap <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">5</span> Demoralizing Shout</li>
+                                    <li><span class="num">6</span> Heroic Strike (rage dump)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PALADIN -->
+                <div class="class-packs" id="paladin-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #f58cba;">
+                            <div class="pack-header">
+                                <span class="icon">⚔️</span>
+                                <h3>TBC Retribution</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Crusader Strike, Judgement, and Seal twisting.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Seal of Command / Blood</li>
+                                    <li><span class="num">2</span> Judgement</li>
+                                    <li><span class="num">3</span> Crusader Strike</li>
+                                    <li><span class="num">4</span> Consecration</li>
+                                    <li><span class="num">5</span> Exorcism</li>
+                                    <li><span class="num">6</span> Hammer of Wrath (&lt;20%)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #f58cba;">
+                            <div class="pack-header">
+                                <span class="icon">🛡️</span>
+                                <h3>TBC Protection</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Holy Shield, Consecration, and AoE threat.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Holy Shield (maintain)</li>
+                                    <li><span class="num">2</span> Avenger's Shield</li>
+                                    <li><span class="num">3</span> Judgement</li>
+                                    <li><span class="num">4</span> Consecration</li>
+                                    <li><span class="num">5</span> Exorcism</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HUNTER -->
+                <div class="class-packs" id="hunter-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #abd473;">
+                            <div class="pack-header">
+                                <span class="icon">🐾</span>
+                                <h3>TBC Beast Mastery</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>1:1 rotation with Kill Command and Bestial Wrath.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Kill Command (on CD)</li>
+                                    <li><span class="num">2</span> Bestial Wrath</li>
+                                    <li><span class="num">3</span> Rapid Fire</li>
+                                    <li><span class="num">4</span> Multi-Shot</li>
+                                    <li><span class="num">5</span> Steady Shot</li>
+                                    <li><span class="num">6</span> Volley <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #abd473;">
+                            <div class="pack-header">
+                                <span class="icon">🎯</span>
+                                <h3>TBC Marksmanship</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Multi-Shot weaving with Rapid Fire + Readiness.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Rapid Fire</li>
+                                    <li><span class="num">2</span> Readiness (reset CDs)</li>
+                                    <li><span class="num">3</span> Multi-Shot</li>
+                                    <li><span class="num">4</span> Arcane Shot</li>
+                                    <li><span class="num">5</span> Steady Shot</li>
+                                    <li><span class="num">6</span> Volley <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #abd473;">
+                            <div class="pack-header">
+                                <span class="icon">🗡️</span>
+                                <h3>TBC Survival</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Expose Weakness uptime with trap weaving.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Rapid Fire</li>
+                                    <li><span class="num">2</span> Explosive Trap <span class="aoe-tag">3+</span></li>
+                                    <li><span class="num">3</span> Multi-Shot</li>
+                                    <li><span class="num">4</span> Steady Shot</li>
+                                    <li><span class="num">5</span> Raptor Strike (if melee)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROGUE -->
+                <div class="class-packs" id="rogue-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #fff569;">
+                            <div class="pack-header">
+                                <span class="icon">⚔️</span>
+                                <h3>TBC Combat</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Sinister Strike with Blade Flurry and Adrenaline Rush.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Adrenaline Rush</li>
+                                    <li><span class="num">2</span> Blade Flurry <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">3</span> Slice and Dice (maintain)</li>
+                                    <li><span class="num">4</span> Rupture (4+ CP)</li>
+                                    <li><span class="num">5</span> Eviscerate (5 CP)</li>
+                                    <li><span class="num">6</span> Sinister Strike</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #fff569;">
+                            <div class="pack-header">
+                                <span class="icon">🗡️</span>
+                                <h3>TBC Assassination</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Mutilate with Cold Blood and Envenom.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Cold Blood</li>
+                                    <li><span class="num">2</span> Slice and Dice (maintain)</li>
+                                    <li><span class="num">3</span> Rupture (4+ CP)</li>
+                                    <li><span class="num">4</span> Envenom / Eviscerate (5 CP)</li>
+                                    <li><span class="num">5</span> Mutilate</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #fff569;">
+                            <div class="pack-header">
+                                <span class="icon">👤</span>
+                                <h3>TBC Subtlety</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Hemorrhage with Premeditation and Shadowstep.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Premeditation</li>
+                                    <li><span class="num">2</span> Shadowstep</li>
+                                    <li><span class="num">3</span> Slice and Dice (maintain)</li>
+                                    <li><span class="num">4</span> Rupture (4+ CP)</li>
+                                    <li><span class="num">5</span> Eviscerate (5 CP)</li>
+                                    <li><span class="num">6</span> Hemorrhage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRIEST -->
+                <div class="class-packs" id="priest-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #ffffff;">
+                            <div class="pack-header">
+                                <span class="icon">🌑</span>
+                                <h3>TBC Shadow</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Vampiric Touch, Mind Blast, Mind Flay rotation.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Inner Focus</li>
+                                    <li><span class="num">2</span> Vampiric Touch (maintain)</li>
+                                    <li><span class="num">3</span> Shadow Word: Pain (maintain)</li>
+                                    <li><span class="num">4</span> Devouring Plague (maintain)</li>
+                                    <li><span class="num">5</span> Mind Blast</li>
+                                    <li><span class="num">6</span> Shadow Word: Death (&lt;25%)</li>
+                                    <li><span class="num">7</span> Mind Flay</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHAMAN -->
+                <div class="class-packs" id="shaman-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #0070de;">
+                            <div class="pack-header">
+                                <span class="icon">⚡</span>
+                                <h3>TBC Elemental</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Chain Lightning on CD, Lightning Bolt filler.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Elemental Mastery</li>
+                                    <li><span class="num">2</span> Totem of Wrath</li>
+                                    <li><span class="num">3</span> Fire Nova Totem <span class="aoe-tag">3+</span></li>
+                                    <li><span class="num">4</span> Chain Lightning</li>
+                                    <li><span class="num">5</span> Lightning Bolt</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #0070de;">
+                            <div class="pack-header">
+                                <span class="icon">🔨</span>
+                                <h3>TBC Enhancement</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Stormstrike on CD with shock weaving.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Shamanistic Rage</li>
+                                    <li><span class="num">2</span> Stormstrike</li>
+                                    <li><span class="num">3</span> Flame Shock (maintain)</li>
+                                    <li><span class="num">4</span> Earth Shock</li>
+                                    <li><span class="num">5</span> Fire Nova Totem <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAGE -->
+                <div class="class-packs" id="mage-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #69ccf0;">
+                            <div class="pack-header">
+                                <span class="icon">🔥</span>
+                                <h3>TBC Fire</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Fireball with Scorch debuff and Combustion.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Combustion</li>
+                                    <li><span class="num">2</span> Scorch (5 stacks)</li>
+                                    <li><span class="num">3</span> Fireball</li>
+                                    <li><span class="num">4</span> Flamestrike <span class="aoe-tag">3+</span></li>
+                                    <li><span class="num">5</span> Blast Wave <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #69ccf0;">
+                            <div class="pack-header">
+                                <span class="icon">❄️</span>
+                                <h3>TBC Frost</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Frostbolt with Icy Veins and Water Elemental.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Icy Veins</li>
+                                    <li><span class="num">2</span> Cold Snap (reset CDs)</li>
+                                    <li><span class="num">3</span> Summon Water Elemental</li>
+                                    <li><span class="num">4</span> Ice Lance (FoF proc)</li>
+                                    <li><span class="num">5</span> Frostbolt</li>
+                                    <li><span class="num">6</span> Blizzard <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #69ccf0;">
+                            <div class="pack-header">
+                                <span class="icon">✨</span>
+                                <h3>TBC Arcane</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Arcane Blast stacking with mana management.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Arcane Power</li>
+                                    <li><span class="num">2</span> Presence of Mind</li>
+                                    <li><span class="num">3</span> Arcane Blast (3 stacks)</li>
+                                    <li><span class="num">4</span> Arcane Missiles (proc)</li>
+                                    <li><span class="num">5</span> Arcane Explosion <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WARLOCK -->
+                <div class="class-packs" id="warlock-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #9482c9;">
+                            <div class="pack-header">
+                                <span class="icon">☠️</span>
+                                <h3>TBC Affliction</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Full DoT rotation with ISB-aware Siphon Life.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Shadow Bolt (Nightfall)</li>
+                                    <li><span class="num">2</span> Curse of Elements</li>
+                                    <li><span class="num">3</span> Unstable Affliction</li>
+                                    <li><span class="num">4</span> Corruption</li>
+                                    <li><span class="num">5</span> Siphon Life (with ISB)</li>
+                                    <li><span class="num">6</span> Immolate</li>
+                                    <li><span class="num">7</span> Shadow Bolt</li>
+                                    <li><span class="num">8</span> Seed of Corruption <span class="aoe-tag">4+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #9482c9;">
+                            <div class="pack-header">
+                                <span class="icon">👹</span>
+                                <h3>TBC Demonology</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Felguard with Demonic Sacrifice or Soul Link.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Summon Felguard</li>
+                                    <li><span class="num">2</span> Curse of Doom / Elements</li>
+                                    <li><span class="num">3</span> Corruption</li>
+                                    <li><span class="num">4</span> Immolate</li>
+                                    <li><span class="num">5</span> Shadow Bolt</li>
+                                    <li><span class="num">6</span> Incinerate</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #9482c9;">
+                            <div class="pack-header">
+                                <span class="icon">🔥</span>
+                                <h3>TBC Destruction</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Shadow Bolt spam with Immolate for Conflag.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Curse of Elements</li>
+                                    <li><span class="num">2</span> Immolate</li>
+                                    <li><span class="num">3</span> Conflagrate</li>
+                                    <li><span class="num">4</span> Shadow Bolt</li>
+                                    <li><span class="num">5</span> Shadowburn (&lt;20%)</li>
+                                    <li><span class="num">6</span> Shadowfury <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DRUID -->
+                <div class="class-packs" id="druid-packs">
+                    <div class="pack-grid">
+                        <div class="pack-card" style="--class-accent: #ff7d0a;">
+                            <div class="pack-header">
+                                <span class="icon">🐱</span>
+                                <h3>TBC Feral Cat</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Mangle, Shred, Rip, Ferocious Bite rotation.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Tiger's Fury</li>
+                                    <li><span class="num">2</span> Faerie Fire (Feral)</li>
+                                    <li><span class="num">3</span> Mangle (Cat)</li>
+                                    <li><span class="num">4</span> Rake (maintain)</li>
+                                    <li><span class="num">5</span> Rip (5 CP)</li>
+                                    <li><span class="num">6</span> Ferocious Bite (5 CP, Rip up)</li>
+                                    <li><span class="num">7</span> Shred</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #ff7d0a;">
+                            <div class="pack-header">
+                                <span class="icon">🐻</span>
+                                <h3>TBC Feral Bear</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Mangle, Lacerate, Swipe tanking rotation.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Faerie Fire (Feral)</li>
+                                    <li><span class="num">2</span> Mangle (Bear)</li>
+                                    <li><span class="num">3</span> Lacerate (5 stacks)</li>
+                                    <li><span class="num">4</span> Swipe <span class="aoe-tag">2+</span></li>
+                                    <li><span class="num">5</span> Maul (rage dump)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pack-card" style="--class-accent: #ff7d0a;">
+                            <div class="pack-header">
+                                <span class="icon">🌙</span>
+                                <h3>TBC Balance</h3>
+                            </div>
+                            <div class="pack-body">
+                                <p>Moonfire, Insect Swarm, Starfire/Wrath rotation.</p>
+                                <ul class="rotation-list">
+                                    <li><span class="num">1</span> Faerie Fire</li>
+                                    <li><span class="num">2</span> Moonfire (maintain)</li>
+                                    <li><span class="num">3</span> Insect Swarm (maintain)</li>
+                                    <li><span class="num">4</span> Starfire</li>
+                                    <li><span class="num">5</span> Wrath (moving)</li>
+                                    <li><span class="num">6</span> Hurricane <span class="aoe-tag">3+</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>Why does Hekili show 3600s cooldown for my abilities?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                The original Hekili TBC files use <code>IsPlayerSpell()</code> which doesn't work correctly in TBC Classic Anniversary. When this returns false, Hekili thinks you don't know the ability and shows 3600s (1 hour) cooldown. Our fix removes these broken checks.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>Why doesn't it switch to AOE rotation with multiple enemies?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                The original files were missing <code>damage = true</code> in the spec options. Without this, Hekili doesn't track targets via combat log and <code>active_enemies</code> stays at 1. Make sure you have enemy nameplates enabled: <code>/console nameplateShowEnemies 1</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>The rotation stops after killing the first mob. Why?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Two issues: 1) Hekili shows "NO ACTION" briefly during target switch, causing script to crash on nil access. 2) Combat detection gap between mobs. Our script fix adds nil checks and improved targeting logic.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>Do I need both the Hekili fix AND the script fix?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <strong>Hekili-Fixed.zip is required</strong> - it fixes the core ability detection issue. The script fix is recommended as a safety net but may not be strictly necessary once Hekili is working correctly.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>Does this work with Death Knights in Wrath?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                This package is specifically for TBC Classic Anniversary. Wrath Classic files are included but haven't been updated with these fixes. Death Knights are a Wrath-only class and not available in TBC.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <span>How do I verify the fix is working?</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                In-game, type <code>/hekili</code> and click "Snapshots". Take a snapshot while in combat. Check the debug output - abilities should show real cooldowns (like 6.00s) instead of 3600.00s. You should also see <code>active_enemies>=2</code> checks in the action list.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purchase CTA -->
+        <section class="cta-section" id="purchase">
+            <div class="container">
+                <div class="cta-box">
+                    <div class="cta-icon">🔥</div>
+                    <h2>Ready to Dominate Outland?</h2>
+                    <p>Get Hekili TBC Fixed with all class support, AOE detection, and rotation packs.</p>
+                    <div class="cta-buttons">
+                        <a href="https://epicsyncpro.github.io/Midnightinfograph/support.html" class="btn btn-primary btn-large">
+                            💬 Contact EpicSyncPro
+                        </a>
+                        <a href="https://discord.gg/epicsyncpro" class="btn btn-secondary btn-large">
+                            <span class="discord-icon">📢</span> Join Discord
+                        </a>
+                    </div>
+                    <div class="cta-features">
+                        <span>✓ All 9 Classes</span>
+                        <span>✓ AOE Detection Fixed</span>
+                        <span>✓ Script Protection</span>
+                        <span>✓ Priority Support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 EpicSyncPro. All rights reserved. | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="support.html">Support</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Class tab switching
+        function showClass(className) {
+            // Hide all class packs
+            document.querySelectorAll('.class-packs').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Deactivate all tabs
+            document.querySelectorAll('.class-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show selected class packs
+            document.getElementById(className + '-packs').classList.add('active');
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .fix-item, .pack-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
